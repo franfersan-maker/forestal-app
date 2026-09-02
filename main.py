@@ -197,8 +197,7 @@ def show_setup_error(error: SupabaseApiError) -> None:
         file_name="supabase_schema.sql",
         mime="application/sql",
     )
-    else:
-        st.code(sanitize_error(error))
+            st.code(sanitize_error(error))
 
 
 def sanitize_error(error: Exception) -> str:
