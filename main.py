@@ -190,7 +190,8 @@ def show_setup_error(error: SupabaseApiError) -> None:
     if error.status == 404 or "schema cache" in error.message.lower():
         st.info(
             "La conexión funciona, pero todavía faltan las tablas de Forestal App. "
-            "Ejecuta el archivo `supabase_schema.sql` en el SQL Editor de tu proyecto Supabase."
+          # Ya creamos las tablas a mano en Supabase
+    pass
         )
         st.download_button(
     "Descargar esquema de Supabase",
