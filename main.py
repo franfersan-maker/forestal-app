@@ -192,10 +192,12 @@ def show_setup_error(error: SupabaseApiError) -> None:
             "La conexión funciona, pero todavía faltan las tablas de Forestal App. "
             "Ejecuta el archivo `supabase_schema.sql` en el SQL Editor de tu proyecto Supabase."
         )
-        st.download_button(
-            "Descargar esquema de Supabase",
-                       mime="application/sql",
-        )
+       st.download_button(
+    "Descargar esquema de Supabase",
+    data="-- Ya creaste las tablas a mano, no necesitas este archivo\n",
+    file_name="supabase_schema.sql",
+    mime="application/sql",
+)
     else:
         st.code(sanitize_error(error))
 
