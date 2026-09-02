@@ -187,18 +187,16 @@ def create_export(files: list[dict[str, Any]], rows: list[dict[str, Any]]) -> by
 
 def show_setup_error(error: SupabaseApiError) -> None:
     st.error("No se pudo completar la conexión con Supabase.")
-    if error.status == 404 or "schema cache" in error.message.lower():
-        st.info(
-            "La conexión funciona, pero todavía faltan las tablas de Forestal App. "
-          # Ya creamos las tablas a mano en Supabase
-    pass
-        )
-        st.download_button(
-    "Descargar esquema de Supabase",
-    data="-- Ya creaste las tablas a mano, no necesitas este archivo\n",
-    file_name="supabase_schema.sql",
-    mime="application/sql",
-)
+    st.info(
+        "La conexión funciona, pero todavía faltan las tablas de Forestal App. "
+        "Ya las creaste en Supabase, así que ignora este mensaje."
+    )
+    st.download_button(
+        "Descargar esquema de Supabase",
+        data="-- Ya creaste las tablas a mano, no necesitas este archivo\n",
+        file_name="supabase_schema.sql",
+        mime="application/sql",
+    )
     else:
         st.code(sanitize_error(error))
 
