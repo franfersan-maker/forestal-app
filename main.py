@@ -49,7 +49,7 @@ def password_matches(password: str, encoded_hash: str) -> bool:
         derived = hashlib.pbkdf2_hmac(
             "sha256",
             password.encode("utf-8"),
-            base64.urlsafe_b64decode(salt + "==="),
+            base64.urlsafe_b64decode(salt + "=="),
             int(iterations),
         )
         actual = base64.urlsafe_b64encode(derived).decode("ascii").rstrip("=")
