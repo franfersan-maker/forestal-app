@@ -194,9 +194,7 @@ def show_setup_error(error: SupabaseApiError) -> None:
         )
         st.download_button(
             "Descargar esquema de Supabase",
-            data=Path("supabase_schema.sql").read_bytes(),
-            file_name="supabase_schema.sql",
-            mime="application/sql",
+                       mime="application/sql",
         )
     else:
         st.code(sanitize_error(error))
@@ -224,8 +222,7 @@ def show_runtime_error(error: Exception) -> None:
         full_traceback = "".join(traceback.TracebackException.from_exception(error).format())
         st.code(sanitize_text(full_traceback))
     st.info(
-        "Si el error menciona tablas inexistentes, ejecuta `supabase_schema.sql` "
-        "en el SQL Editor de Supabase."
+           "en el SQL Editor de Supabase."
     )
 
 
